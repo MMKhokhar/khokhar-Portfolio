@@ -9,7 +9,35 @@
   <script src="script.js" defer></script>
 </head>
 <body>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const filterBtn = document.querySelector(".filter-toggle");
+    const filterMenu = document.querySelector(".filter-menu");
 
+    filterBtn.addEventListener("click", function () {
+      filterMenu.classList.toggle("show");
+    });
+
+    // Optional: Close menu if clicked outside
+    document.addEventListener("click", function (e) {
+      if (!filterBtn.contains(e.target) && !filterMenu.contains(e.target)) {
+        filterMenu.classList.remove("show");
+      }
+    });
+  });
+</script>
+<!-- Filter Toggle Button -->
+<button class="filter-toggle">☰ Filters</button>
+
+<!-- Filter Menu -->
+<div class="filter-menu">
+  <a href="#home">🏠 Home</a>
+  <a href="#about">👤 About</a>
+  <a href="#skills">🛠️ Skills</a>
+  <a href="#pastwork">📁 Past Work</a>
+  <a href="#services">💼 Services</a>
+  <a href="#contact">📞 Contact</a>
+</div>
   <!-- Scroll To Top Button -->
   <button id="scrollToTopBtn" title="Go to top">&#8679;</button>
 
