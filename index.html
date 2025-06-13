@@ -4,102 +4,197 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>M Maqsood | Web Scraping & Automation Specialist</title>
-  <link rel="icon" href="Logo.png" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles.css" />
   <style>
-    html {
-      scroll-behavior: smooth;
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .filter-toggle {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      background-color: #333;
-      color: white;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      z-index: 1000;
-      cursor: pointer;
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #F4F4F4;
+      color: #2C3E50;
     }
 
-    .filter-menu {
-      position: fixed;
-      top: 55px;
-      right: 15px;
-      background-color: white;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      padding: 10px;
-      display: none;
-      flex-direction: column;
-      z-index: 999;
-    }
-
-    .filter-menu.show {
-      display: flex;
-    }
-
-    .filter-menu a {
+    a {
       text-decoration: none;
-      color: #333;
-      padding: 8px 0;
-      font-weight: 500;
+      color: inherit;
     }
 
-    .filter-menu a:hover {
-      color: #007bff;
+    /* Header Styles */
+    .header {
+      background-color: #fff;
+      padding: 20px 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-img {
+      height: 50px;
+    }
+
+    .nav-list {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-list li a {
+      font-weight: 500;
+      padding: 8px 12px;
+      transition: color 0.3s;
+    }
+
+    .nav-list li a:hover,
+    .nav-list li a.active {
+      color: #00A9E0;
+    }
+
+    /* Hero Section */
+    .container h1 {
+      margin-top: 40px;
+      font-size: 2.5em;
+    }
+
+    .container h2 {
+      font-size: 1.2em;
+      margin: 10px 0 20px;
+      color: #555;
+    }
+
+    .container p {
+      font-size: 1em;
+      margin-bottom: 20px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background-color: #00A9E0;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .cta-btn:hover {
+      background-color: #008bbf;
+    }
+
+    /* Section Titles */
+    .centered-title {
+      text-align: center;
+      margin: 60px 0 20px;
+      font-size: 2em;
+    }
+
+    /* Certification Slider */
+    .cert-slider-wrapper {
+      overflow-x: auto;
+      white-space: nowrap;
+      padding: 20px 0;
+    }
+
+    .cert-slider {
+      display: flex;
+      gap: 20px;
+      padding: 0 10px;
+    }
+
+    .cert-card {
+      min-width: 250px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+      padding: 10px;
+    }
+
+    .cert-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .cert-title {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    /* Testimonials */
+    .testimonial-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .testimonial-card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 300px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .testimonial-card p {
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+    .footer-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      border-top: 1px solid #ddd;
+      font-size: 0.9em;
+    }
+
+    .social-icons a img {
+      width: 24px;
+      margin-left: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-list {
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 10px;
+      }
+
+      .header-flex {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .testimonial-grid {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   </style>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const filterBtn = document.querySelector(".filter-toggle");
-      const filterMenu = document.querySelector(".filter-menu");
-
-      filterBtn.addEventListener("click", function () {
-        filterMenu.classList.toggle("show");
-      });
-
-      // Auto-close on outside click
-      document.addEventListener("click", function (e) {
-        if (!filterBtn.contains(e.target) && !filterMenu.contains(e.target)) {
-          filterMenu.classList.remove("show");
-        }
-      });
-
-      // Close on menu item click
-      document.querySelectorAll('.filter-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-          filterMenu.classList.remove('show');
-        });
-      });
-    });
-  </script>
 </head>
-
 <body>
 
-  <!-- Filter Toggle Button -->
-  <button class="filter-toggle">☰ Filters</button>
-
-  <!-- Filter Menu -->
-  <div class="filter-menu">
-    <a href="#home">🏠 Home</a>
-    <a href="#about">👤 About</a>
-    <a href="#skills">🛠️ Skills</a>
-    <a href="#pastwork">📁 Past Work</a>
-    <a href="#services">💼 Services</a>
-    <a href="#article">📰 Articles</a>
-    <a href="#contact">📞 Contact</a>
-  </div>
-
-  <!-- Scroll To Top Button -->
-  <button id="scrollToTopBtn" title="Go to top">&#8679;</button>
-
-  <!-- Header -->
+  <!-- HEADER -->
   <header class="header">
     <div class="container header-flex">
       <div class="logo-area">
@@ -107,80 +202,66 @@
       </div>
       <nav class="nav">
         <ul class="nav-list">
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="skills.html">Skills</a></li>
-          <li><a href="past-work.html">Past Work</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="articles.html">Articles/Post</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="index.html" class="active">🏠 Home</a></li>
+          <li><a href="about.html">👤 About</a></li>
+          <li><a href="skills.html">🛠️ Skills</a></li>
+          <li><a href="past-work.html">📁 Past Work</a></li>
+          <li><a href="services.html">💼 Services</a></li>
+          <li><a href="articles.html">📰 Articles/Post</a></li>
+          <li><a href="contact.html">📞 Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- Home Section -->
-  <section id="home" class="hero">
-    <div class="container">
-      <h1>M Maqsood</h1>
-      <h2>Python Data Expert | Web Scraping & Automation Specialist | API Integration, GMB Optimization & Portfolio Site Builder | Turning Raw Data into Business Gold</h2>
-      <p>Welcome to my portfolio where I transform web data into strategic insight. Whether it's scraping, automation, APIs, or business data solutions, I turn complexity into clarity.</p>
-      <a href="past-work.html" class="cta-btn">View My Work</a>
+  <!-- HERO SECTION -->
+  <div class="container">
+    <h1>M Maqsood</h1>
+    <h2>Python Data Expert | Web Scraping & Automation Specialist | API Integration, GMB Optimization & Portfolio Site Builder | Turning Raw Data into Business Gold</h2>
+    <p>Welcome to my portfolio where I transform web data into strategic insight. Whether it's scraping, automation, APIs, or business data solutions, I turn complexity into clarity.</p>
+    <a href="past-work.html" class="cta-btn">View My Work</a>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <h2 class="centered-title">My Certifications</h2>
+  <div class="cert-slider-wrapper">
+    <div class="cert-slider">
+      <!-- Repeat for 13 certs -->
+      <div class="cert-card"><img src="Certi 1.png" alt=""><div class="cert-title">Certificate 1</div></div>
+      <div class="cert-card"><img src="Certi 2.png" alt=""><div class="cert-title">Certificate 2</div></div>
+      <div class="cert-card"><img src="Certi 3.png" alt=""><div class="cert-title">Certificate 3</div></div>
+      <div class="cert-card"><img src="Certi 4.png" alt=""><div class="cert-title">Certificate 4</div></div>
+      <div class="cert-card"><img src="Certi 5.png" alt=""><div class="cert-title">Certificate 5</div></div>
+      <div class="cert-card"><img src="Certi 6.png" alt=""><div class="cert-title">Certificate 6</div></div>
+      <div class="cert-card"><img src="Certi 7.png" alt=""><div class="cert-title">Certificate 7</div></div>
+      <div class="cert-card"><img src="Certi 8.png" alt=""><div class="cert-title">Certificate 8</div></div>
+      <div class="cert-card"><img src="Certi 9.png" alt=""><div class="cert-title">Certificate 9</div></div>
+      <div class="cert-card"><img src="Certi 10.png" alt=""><div class="cert-title">Certificate 10</div></div>
+      <div class="cert-card"><img src="Certi 11.png" alt=""><div class="cert-title">Certificate 11</div></div>
+      <div class="cert-card"><img src="Certi 12.png" alt=""><div class="cert-title">Certificate 12</div></div>
+      <div class="cert-card"><img src="Certi 13.png" alt=""><div class="cert-title">Certificate 13</div></div>
     </div>
-  </section>
+  </div>
 
-  <!-- About Section -->
-  <section id="about" class="about">...</section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="skills">...</section>
-
-  <!-- Past Work Section -->
-  <section id="pastwork" class="work">...</section>
-
-  <!-- Services Section -->
-  <section id="services" class="services">...</section>
-
-  <!-- Articles Section -->
-  <section id="article" class="articles">...</section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="contact">...</section>
-
-  <!-- Certifications Section -->
-  <section class="certifications">
-    <h2 class="centered-title">My Certifications</h2>
-    <div class="cert-slider-wrapper">
-      <div class="cert-slider">
-        <!-- Example Certificates -->
-        <div class="cert-card"><img src="Certi 1.png" alt=""><div class="cert-title">Certificate 1</div></div>
-        <div class="cert-card"><img src="Certi 2.png" alt=""><div class="cert-title">Certificate 2</div></div>
-        <!-- ...up to Certi 13.png -->
-      </div>
+  <!-- TESTIMONIALS -->
+  <h2 class="centered-title">Client Testimonials</h2>
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <p>"Maqsood delivered clean and efficient scraping scripts that saved us hours every week. A true professional!"</p>
+      <strong>Sarah T., E-commerce Manager</strong>
     </div>
-  </section>
-
-  <!-- Testimonials Section -->
-  <section class="testimonials">
-    <h2 class="centered-title">Client Testimonials</h2>
-    <div class="testimonial-grid">
-      <div class="testimonial-card">
-        <p>"Maqsood delivered clean and efficient scraping scripts that saved us hours every week. A true professional!"</p>
-        <strong>Sarah T., E-commerce Manager</strong>
-      </div>
-      <div class="testimonial-card">
-        <p>"Fast, reliable, and always communicates clearly. Highly recommended for any automation work."</p>
-        <strong>Alex R., Startup Founder</strong>
-      </div>
-      <div class="testimonial-card">
-        <p>"Great results on multiple data extraction projects. We will definitely work with him again."</p>
-        <strong>Jamal A., Data Lead</strong>
-      </div>
+    <div class="testimonial-card">
+      <p>"Fast, reliable, and always communicates clearly. Highly recommended for any automation work."</p>
+      <strong>Alex R., Startup Founder</strong>
     </div>
-  </section>
+    <div class="testimonial-card">
+      <p>"Great results on multiple data extraction projects. We will definitely work with him again."</p>
+      <strong>Jamal A., Data Lead</strong>
+    </div>
+  </div>
 
-  <!-- Footer -->
-  <footer class="footer">
+  <!-- FOOTER -->
+  <footer>
     <div class="container footer-flex">
       <p>© 2025 M Maqsood. All rights reserved.</p>
       <div class="social-icons">
