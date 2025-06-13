@@ -1279,4 +1279,10 @@ body {
   display: flex;
 }
 
-/* You can toggle the class `.show` using JavaScript to display the menu */
+.filter-menu {
+  z-index: 2000;
+}
+header, .hero, main, .footer {
+  z-index: 1;
+  position: relative;
+}
