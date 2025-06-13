@@ -65,3 +65,8 @@ window.addEventListener('scroll', () => {
     scrollBtn.style.display = 'none';
   }
 });
+filterMenu.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    filterMenu.classList.remove("show");
+  });
+});
