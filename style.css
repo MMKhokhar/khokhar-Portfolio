@@ -8,39 +8,38 @@
 }
 
 :root {
-  --primary: #2C3E50;
-  --secondary: #00A9E0;
-  --accent: #8DFF00;
-  --bg: #F4F4F4;
-  --text: #333;
-  --white: #fff;
+  --primary: #1E1F26;
+  --secondary: #00C6A9;
+  --accent: #FF5E3A;
+  --text: #f5f5f5;
+  --light-bg: #2C2E3A;
+  --card-bg: #3A3B47;
+  --font: 'Poppins', sans-serif;
+  --transition: all 0.3s ease-in-out;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: var(--bg);
+  font-family: var(--font);
+  background-color: var(--primary);
   color: var(--text);
   line-height: 1.6;
-}
-
-/* ====================
-   CONTAINER
-==================== */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem 2rem;
 }
 
 /* ====================
    HEADER
 ==================== */
 .header {
-  background-color: var(--white);
-  border-bottom: 1px solid #ddd;
+  background: var(--light-bg);
+  box-shadow: var(--shadow);
+  padding: 1rem 0;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 999;
 }
 
 .header-flex {
@@ -50,225 +49,234 @@ body {
 }
 
 .logo-img {
-  width: 60px;
+  height: 50px;
 }
 
 .nav-list {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
-.nav-list li a {
+.nav-list a {
+  color: var(--text);
   text-decoration: none;
-  color: var(--primary);
   font-weight: 500;
-  transition: color 0.3s ease;
+  padding: 0.5rem 1rem;
+  transition: var(--transition);
+  border-radius: 5px;
 }
 
-.nav-list li a:hover,
-.nav-list li a.active {
-  color: var(--secondary);
+.nav-list a:hover,
+.nav-list a.active {
+  background-color: var(--accent);
+  color: #fff;
 }
 
 /* ====================
    HERO SECTION
 ==================== */
+.hero {
+  background: linear-gradient(to right, #00C6A9, #FF5E3A);
+  color: #fff;
+  padding: 6rem 1rem;
+  text-align: center;
+}
+
 .hero h1 {
-  font-size: 2.5rem;
-  color: var(--primary);
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
 }
 
 .hero h2 {
-  font-size: 1.2rem;
-  margin: 1rem 0;
-  color: #444;
+  font-size: 1.5rem;
+  margin-bottom: 1.2rem;
+  font-weight: 400;
 }
 
 .hero p {
-  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .cta-btn {
-  background-color: var(--secondary);
-  color: var(--white);
-  padding: 0.75rem 1.5rem;
-  border-radius: 5px;
+  display: inline-block;
+  background: #fff;
+  color: var(--accent);
+  padding: 0.75rem 2rem;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
   text-decoration: none;
-  transition: background 0.3s ease;
 }
 
 .cta-btn:hover {
-  background-color: var(--primary);
+  background: var(--text);
+  color: var(--primary);
 }
 
 /* ====================
-   CERTIFICATION SLIDER
+   CERTIFICATIONS SECTION
 ==================== */
 .certifications {
-  margin-top: 3rem;
+  background-color: var(--light-bg);
+  padding: 4rem 1rem;
 }
 
 .centered-title {
   text-align: center;
   font-size: 2rem;
-  margin-bottom: 1rem;
-  color: var(--primary);
+  margin-bottom: 2rem;
+  color: var(--secondary);
 }
 
 .cert-slider-wrapper {
   overflow-x: auto;
+  scroll-behavior: smooth;
 }
 
 .cert-slider {
   display: flex;
   gap: 1rem;
   padding: 1rem;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
 }
 
 .cert-card {
-  flex: 0 0 auto;
-  width: 240px;
-  background: var(--white);
-  border-radius: 10px;
+  min-width: 250px;
+  background-color: var(--card-bg);
+  border-radius: 12px;
   overflow: hidden;
-  scroll-snap-align: start;
+  box-shadow: var(--shadow);
   text-align: center;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  transition: var(--transition);
 }
 
 .cert-card img {
   width: 100%;
-  height: auto;
+  height: 250px;
   object-fit: cover;
 }
 
 .cert-title {
-  padding: 0.5rem;
-  background: var(--accent);
-  font-weight: bold;
-  font-size: 1rem;
+  padding: 1rem;
+  font-weight: 600;
+  color: var(--text);
 }
 
 /* ====================
-   TESTIMONIALS
+   TESTIMONIAL SECTION
 ==================== */
 .testimonials {
-  margin-top: 3rem;
-  padding: 2rem 0;
+  padding: 4rem 1rem;
+  background-color: var(--primary);
 }
 
 .testimonial-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  padding: 1rem;
+  gap: 2rem;
 }
 
 .testimonial-card {
-  background-color: var(--white);
-  border-left: 5px solid var(--secondary);
-  padding: 1rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  border-radius: 8px;
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+}
+
+.testimonial-card p {
+  font-style: italic;
+  margin-bottom: 1rem;
+  color: #ddd;
+}
+
+.testimonial-card strong {
+  color: var(--accent);
 }
 
 /* ====================
    FOOTER
 ==================== */
 footer {
-  background-color: var(--primary);
-  color: var(--white);
-  padding: 1.5rem 0;
-  margin-top: 3rem;
+  background: var(--light-bg);
+  color: #ccc;
+  padding: 2rem 1rem;
+  text-align: center;
 }
 
 .footer-flex {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 1rem;
   align-items: center;
-  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .social-icons a {
-  margin-left: 1rem;
+  margin: 0 0.5rem;
   display: inline-block;
+  transition: var(--transition);
 }
 
 .social-icons img {
-  width: 28px;
-  height: 28px;
-  filter: brightness(0) invert(1);
-  transition: transform 0.3s ease;
+  width: 30px;
+  height: 30px;
+  filter: grayscale(100%);
 }
 
-.social-icons img:hover {
+.social-icons a:hover img {
+  filter: none;
   transform: scale(1.1);
 }
 
 /* ====================
-   RESPONSIVE
+   MEDIA QUERIES
 ==================== */
 @media (max-width: 768px) {
+  .nav-list {
+    flex-direction: column;
+    background: var(--primary);
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 200px;
+    padding: 1rem;
+    display: none;
+  }
+
   .header-flex {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .nav-list {
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-
-  .footer-flex {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-
   .hero h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
+  }
+
+  .hero h2 {
+    font-size: 1.2rem;
+  }
+
+  .cta-btn {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.5rem;
+  }
+
+  .cert-card img {
+    height: 180px;
+  }
+
+  .testimonial-grid {
+    grid-template-columns: 1fr;
   }
 }
-/* ====================
-   HERO SECTION
-==================== */
-.hero {
-  padding: 3rem 2rem;
-  text-align: center;
-  background-color: var(--white);
-}
-
-.hero h1 {
-  font-size: 2.5rem;
-  color: var(--primary);
-}
-
-.hero h2 {
-  font-size: 1.2rem;
-  margin: 1rem 0;
-  color: #444;
-}
-
-.hero p {
-  margin-bottom: 1.5rem;
-}
-
-.cta-btn {
-  background-color: var(--secondary);
-  color: var(--white);
-  padding: 0.75rem 1.5rem;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: background 0.3s ease;
-}
-
-.cta-btn:hover {
-  background-color: var(--primary);
-}
-.hero { background: #e0f7ff; }
-.certifications { background: #f9ffe0; }
-.testimonials { background: #fff0f0; }
