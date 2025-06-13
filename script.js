@@ -1,88 +1,94 @@
+<!-- =============================
+      Main JavaScript Functions
+============================= -->
 <script>
-  // ============================
-  // Scroll to Top Button
-  // ============================
-  const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-
-  window.addEventListener("scroll", () => {
-    scrollToTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
-  });
-
-  scrollToTopBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-
-  // ============================
-  // Fade-in Animation on Scroll
-  // ============================
   document.addEventListener("DOMContentLoaded", () => {
+    // ============================
+    // Scroll to Top Button
+    // ============================
+    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+    window.addEventListener("scroll", () => {
+      scrollToTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
+    });
+
+    scrollToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // ============================
+    // Reveal on Scroll Animation
+    // ============================
     const revealElements = document.querySelectorAll(".hero, .certifications, .testimonials");
 
-    const revealOnScroll = () => {
+    const handleRevealOnScroll = () => {
+      const windowHeight = window.innerHeight;
+
       revealElements.forEach((el) => {
         const elementTop = el.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
         if (elementTop < windowHeight - 100) {
           el.classList.add("visible");
         }
       });
     };
 
-    window.addEventListener("scroll", revealOnScroll);
-    revealOnScroll(); // Trigger on load
-  });
+    window.addEventListener("scroll", handleRevealOnScroll);
+    handleRevealOnScroll(); // Initial trigger
 
-  // ============================
-  // Certifications Carousel
-  // ============================
-  let carouselIndex = 0;
+    // ============================
+    // Certifications Carousel Slider
+    // ============================
+    let carouselIndex = 0;
+    const moveCarousel = () => {
+      const track = document.querySelector(".cert-slider");
+      const cards = document.querySelectorAll(".cert-card");
+      if (!track || cards.length === 0) return;
 
-  function moveCarousel() {
-    const track = document.querySelector(".cert-slider");
-    const cards = document.querySelectorAll(".cert-card");
-    if (!track || cards.length === 0) return;
+      const visibleCards = 2;
+      const cardWidth = cards[0].offsetWidth + 20; // Add margin or gap
+      const totalSlides = Math.ceil(cards.length / visibleCards);
 
-    const totalVisible = 2; // Number of visible cards
-    const cardWidth = cards[0].offsetWidth + 20; // +gap between cards
-    const totalSlides = Math.ceil(cards.length / totalVisible);
+      carouselIndex = (carouselIndex + 1) % totalSlides;
+      const offset = carouselIndex * cardWidth * visibleCards;
 
-    carouselIndex = (carouselIndex + 1) % totalSlides;
+      track.style.transition = "transform 0.5s ease-in-out";
+      track.style.transform = `translateX(-${offset}px)`;
+    };
 
-    const offset = carouselIndex * cardWidth * totalVisible;
-    track.style.transition = "transform 0.5s ease-in-out";
-    track.style.transform = `translateX(-${offset}px)`;
-  }
+    setInterval(moveCarousel, 3000);
 
-  setInterval(moveCarousel, 3000); // Auto-slide every 3 seconds
-
-  // ============================
-  // Filter Menu Toggle
-  // ============================
-  document.addEventListener("DOMContentLoaded", () => {
+    // ============================
+    // Filter Menu Toggle
+    // ============================
     const filterBtn = document.querySelector(".filter-toggle");
     const filterMenu = document.querySelector(".filter-menu");
 
-    filterBtn.addEventListener("click", () => {
-      filterMenu.classList.toggle("show");
-    });
-
-    // Close menu on outside click
-    document.addEventListener("click", (e) => {
-      if (!filterBtn.contains(e.target) && !filterMenu.contains(e.target)) {
-        filterMenu.classList.remove("show");
-      }
-    });
-
-    // Close menu on link click
-    filterMenu.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        filterMenu.classList.remove("show");
+    if (filterBtn && filterMenu) {
+      filterBtn.addEventListener("click", () => {
+        filterMenu.classList.toggle("show");
       });
-    });
+
+      // Close on outside click
+      document.addEventListener("click", (e) => {
+        if (!filterBtn.contains(e.target) && !filterMenu.contains(e.target)) {
+          filterMenu.classList.remove("show");
+        }
+      });
+
+      // Close on link click
+      filterMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          filterMenu.classList.remove("show");
+        });
+      });
+    }
   });
-</script>
-<script>
+
+  // ============================
+  // Responsive Navbar Toggle (Mobile)
+  // ============================
   function toggleMenu() {
-    document.querySelector('.nav-links').classList.toggle('active');
+    const nav = document.querySelector('.nav-links');
+    if (nav) nav.classList.toggle('active');
   }
 </script>
