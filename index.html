@@ -193,4 +193,141 @@
   </footer>
 
 </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>M Maqsood | Web Scraping & Automation Specialist</title>
+  <link rel="icon" href="Logo.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Filter Toggle Button -->
+  <button class="filter-toggle">☰ Filter</button>
+
+  <!-- Filter Menu -->
+  <div class="filter-menu">
+    <a href="#home">🏠 Home</a>
+    <a href="#about">👤 About</a>
+    <a href="#skills">🛠️ Skills</a>
+    <a href="#pastwork">📂 Past Work</a>
+    <a href="#services">💼 Services</a>
+    <a href="#article">📰 Articles</a>
+    <a href="#contact">📞 Contact</a>
+  </div>
+
+  <!-- Scroll to Top Button -->
+  <button id="scrollToTopBtn" title="Go to top">⬆️</button>
+
+  <!-- Sections -->
+  <section id="home" class="hero">...Home Content...</section>
+  <section id="about" class="about">...About Content...</section>
+  <section id="skills" class="skills">...Skills Content...</section>
+  <section id="pastwork" class="work">...Past Work Content...</section>
+  <section id="services" class="services">...Services Content...</section>
+  <section id="article" class="articles">...Articles/Posts...</section>
+  <section id="contact" class="contact">...Contact Info...</section>
+
+  <!-- Certifications (Optional) -->
+  <section class="certifications">
+    <div class="cert-slider">
+      <div class="cert-card">Cert 1</div>
+      <div class="cert-card">Cert 2</div>
+      <!-- Add more cert cards here -->
+    </div>
+  </section>
+
+  <!-- Testimonials (Optional) -->
+  <section class="testimonials">
+    <div class="testimonial-card">Testimonial 1</div>
+    <div class="testimonial-card">Testimonial 2</div>
+  </section>
+
+  <!-- JavaScript -->
+  <script>
+    // ============================
+    // Scroll to Top Button
+    // ============================
+    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+    window.addEventListener("scroll", () => {
+      scrollToTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
+    });
+
+    scrollToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // ============================
+    // Fade-in Animation on Scroll
+    // ============================
+    document.addEventListener("DOMContentLoaded", () => {
+      const revealElements = document.querySelectorAll(".hero, .certifications, .testimonials");
+
+      const revealOnScroll = () => {
+        revealElements.forEach((el) => {
+          const elementTop = el.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+          if (elementTop < windowHeight - 100) {
+            el.classList.add("visible");
+          }
+        });
+      };
+
+      window.addEventListener("scroll", revealOnScroll);
+      revealOnScroll(); // Trigger on load
+    });
+
+    // ============================
+    // Certifications Carousel
+    // ============================
+    let carouselIndex = 0;
+
+    function moveCarousel() {
+      const track = document.querySelector(".cert-slider");
+      const cards = document.querySelectorAll(".cert-card");
+      if (!track || cards.length === 0) return;
+
+      const totalVisible = 2;
+      const cardWidth = cards[0].offsetWidth + 20;
+      const totalSlides = Math.ceil(cards.length / totalVisible);
+
+      carouselIndex = (carouselIndex + 1) % totalSlides;
+
+      const offset = carouselIndex * cardWidth * totalVisible;
+      track.style.transition = "transform 0.5s ease-in-out";
+      track.style.transform = `translateX(-${offset}px)`;
+    }
+
+    setInterval(moveCarousel, 3000);
+
+    // ============================
+    // Filter Menu Toggle
+    // ============================
+    document.addEventListener("DOMContentLoaded", () => {
+      const filterBtn = document.querySelector(".filter-toggle");
+      const filterMenu = document.querySelector(".filter-menu");
+
+      filterBtn.addEventListener("click", () => {
+        filterMenu.classList.toggle("show");
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!filterBtn.contains(e.target) && !filterMenu.contains(e.target)) {
+          filterMenu.classList.remove("show");
+        }
+      });
+
+      filterMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          filterMenu.classList.remove("show");
+        });
+      });
+    });
+  </script>
+</body>
+</html>
 </html>
