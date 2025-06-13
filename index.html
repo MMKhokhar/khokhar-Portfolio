@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,248 +8,139 @@
   <style>
     html {
       scroll-behavior: smooth;
-    }
+    }body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
 
-    .filter-toggle {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      background-color: #333;
-      color: white;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      z-index: 1000;
-      cursor: pointer;
-    }
+header {
+  position: sticky;
+  top: 0;
+  background: #222;
+  padding: 10px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
 
-    .filter-menu {
-      position: fixed;
-      top: 55px;
-      right: 15px;
-      background-color: white;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      padding: 10px;
-      display: none;
-      flex-direction: column;
-      z-index: 999;
-    }
+.filter-toggle {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+}
 
-    .filter-menu.show {
-      display: flex;
-    }
+.filter-menu {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  background: white;
+  border: 1px solid #ddd;
+  z-index: 999;
+}
 
-    .filter-menu a {
-      text-decoration: none;
-      color: #333;
-      padding: 8px 0;
-      font-weight: 500;
-    }
+.filter-menu.show {
+  display: flex;
+}
 
-    .filter-menu a:hover {
-      color: #007bff;
-    }
+.filter-menu a {
+  padding: 10px;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid #eee;
+}
+
+.filter-menu a:hover {
+  background-color: #f4f4f4;
+}
+
+section {
+  padding: 60px 20px;
+  min-height: 100vh;
+}
+
+#scrollToTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: none;
+  padding: 12px;
+  border: none;
+  background: #222;
+  color: white;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 999;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.hero, .certifications, .testimonials {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.cert-slider {
+  display: flex;
+  overflow: hidden;
+}
+
+.cert-card {
+  flex: 0 0 50%;
+  margin-right: 20px;
+  background: #f2f2f2;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .cert-card {
+    flex: 0 0 100%;
+  }
+}
+
   </style>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const filterBtn = document.querySelector(".filter-toggle");
-      const filterMenu = document.querySelector(".filter-menu");
-
-      filterBtn.addEventListener("click", function () {
-        filterMenu.classList.toggle("show");
-      });
-
-      // Auto-close on outside click
-      document.addEventListener("click", function (e) {
-        if (!filterBtn.contains(e.target) && !filterMenu.contains(e.target)) {
-          filterMenu.classList.remove("show");
-        }
-      });
-
-      // Close on menu item click
-      document.querySelectorAll('.filter-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-          filterMenu.classList.remove('show');
-        });
-      });
-    });
-  </script>
 </head>
-
 <body>
-
-  <!-- Filter Toggle Button -->
-  <button class="filter-toggle">☰ Filters</button>
-
-  <!-- Filter Menu -->
-  <div class="filter-menu">
-    <a href="#home">🏠 Home</a>
-    <a href="#about">👤 About</a>
-    <a href="#skills">🛠️ Skills</a>
-    <a href="#pastwork">📁 Past Work</a>
-    <a href="#services">💼 Services</a>
-    <a href="#article">📰 Articles</a>
-    <a href="#contact">📞 Contact</a>
-  </div>
-
-  <!-- Scroll To Top Button -->
-  <button id="scrollToTopBtn" title="Go to top">&#8679;</button>
-
-  <!-- Header -->
-  <header class="header">
-    <div class="container header-flex">
-      <div class="logo-area">
-        <img src="Logo.png" alt="Logo" class="logo-img" />
-      </div>
-      <nav class="nav">
-        <ul class="nav-list">
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="skills.html">Skills</a></li>
-          <li><a href="past-work.html">Past Work</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="articles.html">Articles/Post</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
+  <header>
+    <h1>Portfolio</h1>
+    <button class="filter-toggle">☰</button>
+    <div class="filter-menu">
+      <a href="#home">🏠 Home</a>
+      <a href="#about">👤 About</a>
+      <a href="#skills">🛠️ Skills</a>
+      <a href="#pastwork">📂 Past Work</a>
+      <a href="#services">💼 Services</a>
+      <a href="#article">📰 Articles</a>
+      <a href="#contact">📞 Contact</a>
     </div>
-  </header>
+  </header><button id="scrollToTopBtn">⬆️</button>
 
-  <!-- Home Section -->
-  <section id="home" class="hero">
-    <div class="container">
-      <h1>M Maqsood</h1>
-      <h2>Python Data Expert | Web Scraping & Automation Specialist | API Integration, GMB Optimization & Portfolio Site Builder | Turning Raw Data into Business Gold</h2>
-      <p>Welcome to my portfolio where I transform web data into strategic insight. Whether it's scraping, automation, APIs, or business data solutions, I turn complexity into clarity.</p>
-      <a href="past-work.html" class="cta-btn">View My Work</a>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="about">...</section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="skills">...</section>
-
-  <!-- Past Work Section -->
-  <section id="pastwork" class="work">...</section>
-
-  <!-- Services Section -->
-  <section id="services" class="services">...</section>
-
-  <!-- Articles Section -->
-  <section id="article" class="articles">...</section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="contact">...</section>
-
-  <!-- Certifications Section -->
-  <section class="certifications">
-    <h2 class="centered-title">My Certifications</h2>
-    <div class="cert-slider-wrapper">
-      <div class="cert-slider">
-        <!-- Example Certificates -->
-        <div class="cert-card"><img src="Certi 1.png" alt=""><div class="cert-title">Certificate 1</div></div>
-        <div class="cert-card"><img src="Certi 2.png" alt=""><div class="cert-title">Certificate 2</div></div>
-        <!-- ...up to Certi 13.png -->
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials Section -->
-  <section class="testimonials">
-    <h2 class="centered-title">Client Testimonials</h2>
-    <div class="testimonial-grid">
-      <div class="testimonial-card">
-        <p>"Maqsood delivered clean and efficient scraping scripts that saved us hours every week. A true professional!"</p>
-        <strong>Sarah T., E-commerce Manager</strong>
-      </div>
-      <div class="testimonial-card">
-        <p>"Fast, reliable, and always communicates clearly. Highly recommended for any automation work."</p>
-        <strong>Alex R., Startup Founder</strong>
-      </div>
-      <div class="testimonial-card">
-        <p>"Great results on multiple data extraction projects. We will definitely work with him again."</p>
-        <strong>Jamal A., Data Lead</strong>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-flex">
-      <p>© 2025 M Maqsood. All rights reserved.</p>
-      <div class="social-icons">
-        <a href="https://www.facebook.com/MMKhokhar777" target="_blank"><img src="facebook-icon.png" alt="Facebook" /></a>
-        <a href="https://www.linkedin.com/in/mkhokhar1" target="_blank"><img src="linkedin-icon.png" alt="LinkedIn" /></a>
-        <a href="https://wa.me/923137742971" target="_blank"><img src="WhatsApp.png" alt="WhatsApp" /></a>
-        <a href="mailto:mmofficialswl@gmail.com" target="_blank"><img src="Gmail.png" alt="Gmail" /></a>
-      </div>
-    </div>
-  </footer>
-
-</body>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>M Maqsood | Web Scraping & Automation Specialist</title>
-  <link rel="icon" href="Logo.png" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-
-<body>
-
-  <!-- Filter Toggle Button -->
-  <button class="filter-toggle">☰ Filter</button>
-
-  <!-- Filter Menu -->
-  <div class="filter-menu">
-    <a href="#home">🏠 Home</a>
-    <a href="#about">👤 About</a>
-    <a href="#skills">🛠️ Skills</a>
-    <a href="#pastwork">📂 Past Work</a>
-    <a href="#services">💼 Services</a>
-    <a href="#article">📰 Articles</a>
-    <a href="#contact">📞 Contact</a>
-  </div>
-
-  <!-- Scroll to Top Button -->
-  <button id="scrollToTopBtn" title="Go to top">⬆️</button>
-
-  <!-- Sections -->
-  <section id="home" class="hero">...Home Content...</section>
-  <section id="about" class="about">...About Content...</section>
-  <section id="skills" class="skills">...Skills Content...</section>
-  <section id="pastwork" class="work">...Past Work Content...</section>
-  <section id="services" class="services">...Services Content...</section>
-  <section id="article" class="articles">...Articles/Posts...</section>
-  <section id="contact" class="contact">...Contact Info...</section>
-
-  <!-- Certifications (Optional) -->
-  <section class="certifications">
+  <section id="home" class="hero">Home Content</section>
+  <section id="about">About Content</section>
+  <section id="skills">Skills Content</section>
+  <section id="pastwork">Past Work Content</section>
+  <section id="services">Services Content</section>
+  <section id="article">Articles Content</section>
+  <section id="contact">Contact Content</section>  <section class="certifications">
     <div class="cert-slider">
       <div class="cert-card">Cert 1</div>
       <div class="cert-card">Cert 2</div>
-      <!-- Add more cert cards here -->
+      <div class="cert-card">Cert 3</div>
     </div>
-  </section>
-
-  <!-- Testimonials (Optional) -->
-  <section class="testimonials">
+  </section>  <section class="testimonials">
     <div class="testimonial-card">Testimonial 1</div>
     <div class="testimonial-card">Testimonial 2</div>
-  </section>
-
-  <!-- JavaScript -->
-  <script>
-    // ============================
-    // Scroll to Top Button
-    // ============================
+  </section>  <script>
     const scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
     window.addEventListener("scroll", () => {
@@ -261,73 +151,10 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
-    // ============================
-    // Fade-in Animation on Scroll
-    // ============================
     document.addEventListener("DOMContentLoaded", () => {
       const revealElements = document.querySelectorAll(".hero, .certifications, .testimonials");
 
       const revealOnScroll = () => {
         revealElements.forEach((el) => {
           const elementTop = el.getBoundingClientRect().top;
-          const windowHeight = window.innerHeight;
-          if (elementTop < windowHeight - 100) {
-            el.classList.add("visible");
-          }
-        });
-      };
-
-      window.addEventListener("scroll", revealOnScroll);
-      revealOnScroll(); // Trigger on load
-    });
-
-    // ============================
-    // Certifications Carousel
-    // ============================
-    let carouselIndex = 0;
-
-    function moveCarousel() {
-      const track = document.querySelector(".cert-slider");
-      const cards = document.querySelectorAll(".cert-card");
-      if (!track || cards.length === 0) return;
-
-      const totalVisible = 2;
-      const cardWidth = cards[0].offsetWidth + 20;
-      const totalSlides = Math.ceil(cards.length / totalVisible);
-
-      carouselIndex = (carouselIndex + 1) % totalSlides;
-
-      const offset = carouselIndex * cardWidth * totalVisible;
-      track.style.transition = "transform 0.5s ease-in-out";
-      track.style.transform = `translateX(-${offset}px)`;
-    }
-
-    setInterval(moveCarousel, 3000);
-
-    // ============================
-    // Filter Menu Toggle
-    // ============================
-    document.addEventListener("DOMContentLoaded", () => {
-      const filterBtn = document.querySelector(".filter-toggle");
-      const filterMenu = document.querySelector(".filter-menu");
-
-      filterBtn.addEventListener("click", () => {
-        filterMenu.classList.toggle("show");
-      });
-
-      document.addEventListener("click", (e) => {
-        if (!filterBtn.contains(e.target) && !filterMenu.contains(e.target)) {
-          filterMenu.classList.remove("show");
-        }
-      });
-
-      filterMenu.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-          filterMenu.classList.remove("show");
-        });
-      });
-    });
-  </script>
-</body>
-</html>
-</html>
+          const windowHeight
