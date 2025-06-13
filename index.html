@@ -6,59 +6,96 @@
   <title>M Maqsood | Web Scraping & Automation Specialist</title>
   <link rel="icon" href="Logo.png" />
   <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
-<!-- Home Section -->
-<section id="home" class="hero">...</section>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
 
-<!-- About Section -->
-<section id="about" class="about">...</section>
+    .filter-toggle {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background-color: #333;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      z-index: 1000;
+      cursor: pointer;
+    }
 
-<!-- Skills Section -->
-<section id="skills" class="skills">...</section>
+    .filter-menu {
+      position: fixed;
+      top: 55px;
+      right: 15px;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      display: none;
+      flex-direction: column;
+      z-index: 999;
+    }
 
-<!-- Past Work Section -->
-<section id="pastwork" class="work">...</section>
+    .filter-menu.show {
+      display: flex;
+    }
 
-<!-- Services Section -->
-<section id="services" class="services">...</section>
+    .filter-menu a {
+      text-decoration: none;
+      color: #333;
+      padding: 8px 0;
+      font-weight: 500;
+    }
 
-<!-- Contact Section -->
-<section id="contact" class="contact">...</section>
+    .filter-menu a:hover {
+      color: #007bff;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const filterBtn = document.querySelector(".filter-toggle");
+      const filterMenu = document.querySelector(".filter-menu");
 
-<!-- Articles Section -->
-<section id="article" class="articles">...</section>
+      filterBtn.addEventListener("click", function () {
+        filterMenu.classList.toggle("show");
+      });
 
+      // Auto-close on outside click
+      document.addEventListener("click", function (e) {
+        if (!filterBtn.contains(e.target) && !filterMenu.contains(e.target)) {
+          filterMenu.classList.remove("show");
+        }
+      });
+
+      // Close on menu item click
+      document.querySelectorAll('.filter-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+          filterMenu.classList.remove('show');
+        });
+      });
+    });
+  </script>
 </head>
+
 <body>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const filterBtn = document.querySelector(".filter-toggle");
-    const filterMenu = document.querySelector(".filter-menu");
 
-    filterBtn.addEventListener("click", function () {
-      filterMenu.classList.toggle("show");
-    });
+  <!-- Filter Toggle Button -->
+  <button class="filter-toggle">☰ Filters</button>
 
-    // Optional: Close menu if clicked outside
-    document.addEventListener("click", function (e) {
-      if (!filterBtn.contains(e.target) && !filterMenu.contains(e.target)) {
-        filterMenu.classList.remove("show");
-      }
-    });
-  });
-</script>
-<!-- Filter Toggle Button -->
-<button class="filter-toggle">☰ Filters</button>
+  <!-- Filter Menu -->
+  <div class="filter-menu">
+    <a href="#home">🏠 Home</a>
+    <a href="#about">👤 About</a>
+    <a href="#skills">🛠️ Skills</a>
+    <a href="#pastwork">📁 Past Work</a>
+    <a href="#services">💼 Services</a>
+    <a href="#article">📰 Articles</a>
+    <a href="#contact">📞 Contact</a>
+  </div>
 
-<!-- Filter Menu -->
-<div class="filter-menu">
-  <a href="#home">🏠 Home</a>
-  <a href="#about">👤 About</a>
-  <a href="#skills">🛠️ Skills</a>
-  <a href="#pastwork">📁 Past Work</a>
-  <a href="#services">💼 Services</a>
-  <a href="#contact">📞 Contact</a>
-</div>
   <!-- Scroll To Top Button -->
   <button id="scrollToTopBtn" title="Go to top">&#8679;</button>
 
@@ -82,8 +119,8 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
+  <!-- Home Section -->
+  <section id="home" class="hero">
     <div class="container">
       <h1>M Maqsood</h1>
       <h2>Python Data Expert | Web Scraping & Automation Specialist | API Integration, GMB Optimization & Portfolio Site Builder | Turning Raw Data into Business Gold</h2>
@@ -92,25 +129,33 @@
     </div>
   </section>
 
+  <!-- About Section -->
+  <section id="about" class="about">...</section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="skills">...</section>
+
+  <!-- Past Work Section -->
+  <section id="pastwork" class="work">...</section>
+
+  <!-- Services Section -->
+  <section id="services" class="services">...</section>
+
+  <!-- Articles Section -->
+  <section id="article" class="articles">...</section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">...</section>
+
   <!-- Certifications Section -->
   <section class="certifications">
     <h2 class="centered-title">My Certifications</h2>
     <div class="cert-slider-wrapper">
       <div class="cert-slider">
-        <!-- 13 certificates -->
+        <!-- Example Certificates -->
         <div class="cert-card"><img src="Certi 1.png" alt=""><div class="cert-title">Certificate 1</div></div>
         <div class="cert-card"><img src="Certi 2.png" alt=""><div class="cert-title">Certificate 2</div></div>
-        <div class="cert-card"><img src="Certi 3.png" alt=""><div class="cert-title">Certificate 3</div></div>
-        <div class="cert-card"><img src="Certi 4.png" alt=""><div class="cert-title">Certificate 4</div></div>
-        <div class="cert-card"><img src="Certi 5.png" alt=""><div class="cert-title">Certificate 5</div></div>
-        <div class="cert-card"><img src="Certi 6.png" alt=""><div class="cert-title">Certificate 6</div></div>
-        <div class="cert-card"><img src="Certi 7.png" alt=""><div class="cert-title">Certificate 7</div></div>
-        <div class="cert-card"><img src="Certi 8.png" alt=""><div class="cert-title">Certificate 8</div></div>
-        <div class="cert-card"><img src="Certi 9.png" alt=""><div class="cert-title">Certificate 9</div></div>
-        <div class="cert-card"><img src="Certi 10.png" alt=""><div class="cert-title">Certificate 10</div></div>
-        <div class="cert-card"><img src="Certi 11.png" alt=""><div class="cert-title">Certificate 11</div></div>
-        <div class="cert-card"><img src="Certi 12.png" alt=""><div class="cert-title">Certificate 12</div></div>
-        <div class="cert-card"><img src="Certi 13.png" alt=""><div class="cert-title">Certificate 13</div></div>
+        <!-- ...up to Certi 13.png -->
       </div>
     </div>
   </section>
