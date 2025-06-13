@@ -1179,3 +1179,104 @@ body {
     align-items: center;
   }
 }
+/* ====================
+   Logo Color Circle Animation
+==================== */
+.logo-area img {
+  border: 6px solid transparent;
+  border-image: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #1dd1a1);
+  border-image-slice: 1;
+  border-radius: 50%;
+  padding: 5px;
+  animation: spin-border 4s linear infinite;
+}
+
+@keyframes spin-border {
+  0% { border-image: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #1dd1a1); }
+  100% { border-image: linear-gradient(405deg, #ff6b6b, #feca57, #48dbfb, #1dd1a1); }
+}
+
+/* ====================
+   Icon Highlighting
+==================== */
+.nav-list a {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-list a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.nav-list a:hover::after,
+.nav-list a.active::after {
+  width: 100%;
+}
+
+.nav-list a:hover {
+  color: var(--accent);
+  transform: scale(1.05);
+}
+
+/* ====================
+   Filter Button (Top Right Dropdown Menu)
+==================== */
+.filter-toggle {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: var(--accent);
+  border: none;
+  color: #000;
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  z-index: 2000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
+}
+
+.filter-toggle:hover {
+  background: #b7ff4f;
+}
+
+.filter-menu {
+  position: fixed;
+  top: 60px;
+  right: 15px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1999;
+}
+
+.filter-menu a {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.filter-menu a:hover {
+  background-color: var(--bg);
+}
+
+.filter-menu.show {
+  display: flex;
+}
+
+/* You can toggle the class `.show` using JavaScript to display the menu */
