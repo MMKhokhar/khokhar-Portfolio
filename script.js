@@ -1,94 +1,67 @@
-<!-- =============================
-      Main JavaScript Functions
-============================= -->
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    // ============================
-    // Scroll to Top Button
-    // ============================
-    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+// ============================
+// Scroll to Top Button
+// ============================
+const scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
-    window.addEventListener("scroll", () => {
-      scrollToTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
-    });
+window.addEventListener("scroll", () => {
+  scrollToTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
+});
 
-    scrollToTopBtn.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+scrollToTopBtn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
 
-    // ============================
-    // Reveal on Scroll Animation
-    // ============================
-    const revealElements = document.querySelectorAll(".hero, .certifications, .testimonials");
+// ============================
+// Fade-in Animation on Scroll
+// ============================
+document.addEventListener("DOMContentLoaded", () => {
+  const revealElements = document.querySelectorAll(".hero, .certifications, .testimonials");
 
-    const handleRevealOnScroll = () => {
+  const revealOnScroll = () => {
+    revealElements.forEach((el) => {
+      const elementTop = el.getBoundingClientRect().top;
       const windowHeight = window.innerHeight;
+      if (elementTop < windowHeight - 100) {
+        el.classList.add("visible");
+      }
+    });
+  };
 
-      revealElements.forEach((el) => {
-        const elementTop = el.getBoundingClientRect().top;
-        if (elementTop < windowHeight - 100) {
-          el.classList.add("visible");
-        }
-      });
-    };
+  window.addEventListener("scroll", revealOnScroll);
+  revealOnScroll(); // Trigger on load
+});
 
-    window.addEventListener("scroll", handleRevealOnScroll);
-    handleRevealOnScroll(); // Initial trigger
+// ============================
+// Certifications Carousel
+// ============================
+let carouselIndex = 0;
 
-    // ============================
-    // Certifications Carousel Slider
-    // ============================
-    let carouselIndex = 0;
-    const moveCarousel = () => {
-      const track = document.querySelector(".cert-slider");
-      const cards = document.querySelectorAll(".cert-card");
-      if (!track || cards.length === 0) return;
+function moveCarousel() {
+  const track = document.querySelector(".cert-slider");
+  const cards = document.querySelectorAll(".cert-card");
+  if (!track || cards.length === 0) return;
 
-      const visibleCards = 2;
-      const cardWidth = cards[0].offsetWidth + 20; // Add margin or gap
-      const totalSlides = Math.ceil(cards.length / visibleCards);
+  const totalVisible = 2; // Number of visible cards
+  const cardWidth = cards[0].offsetWidth + 20; // +gap between cards
+  const totalSlides = Math.ceil(cards.length / totalVisible);
 
-      carouselIndex = (carouselIndex + 1) % totalSlides;
-      const offset = carouselIndex * cardWidth * visibleCards;
+  carouselIndex = (carouselIndex + 1) % totalSlides;
 
-      track.style.transition = "transform 0.5s ease-in-out";
-      track.style.transform = `translateX(-${offset}px)`;
-    };
+  const offset = carouselIndex * cardWidth * totalVisible;
+  track.style.transition = "transform 0.5s ease-in-out";
+  track.style.transform = `translateX(-${offset}px)`;
+}
 
-    setInterval(moveCarousel, 3000);
-
-    // ============================
-    // Filter Menu Toggle
-    // ============================
-    const filterBtn = document.querySelector(".filter-toggle");
-    const filterMenu = document.querySelector(".filter-menu");
-
-    if (filterBtn && filterMenu) {
-      filterBtn.addEventListener("click", () => {
-        filterMenu.classList.toggle("show");
-      });
-
-      // Close on outside click
-      document.addEventListener("click", (e) => {
-        if (!filterBtn.contains(e.target) && !filterMenu.contains(e.target)) {
-          filterMenu.classList.remove("show");
-        }
-      });
-
-      // Close on link click
-      filterMenu.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-          filterMenu.classList.remove("show");
-        });
-      });
-    }
-  });
-
-  // ============================
-  // Responsive Navbar Toggle (Mobile)
-  // ============================
-  function toggleMenu() {
-    const nav = document.querySelector('.nav-links');
-    if (nav) nav.classList.toggle('active');
+// Start auto sliding every 3 seconds
+setInterval(moveCarousel, 3000);
+const scrollBtn = document.getElementById('scrollToTopBtn');
+scrollBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    scrollBtn.style.display = 'block';
+  } else {
+    scrollBtn.style.display = 'none';
   }
-</script>
+});
