@@ -7,29 +7,30 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Header -->
-<header>
-  <div class="container">
-    <div class="logo">
-      <img src="logo.png" alt="Profile Picture">
-      <span>M Maqsood</span>
-    </div>
-    <nav class="navbar" id="navbar">
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about.html">About</a></li>
-        <li><a href="#skills.html">Skills</a></li>
-        <li><a href="#work">Past Work</a></li>
-        <li><a href="#services.html">Services</a></li>
-        <li><a href="#articles.html">Articles/Post</a></li>
-        <li><a href="#contact.html">Contact</a></li>
-      </ul>
-      <div class="hamburger" onclick="toggleMenu()">☰</div>
-    </nav>
-  </div>
-</header>
 
-  <!-- HERO SECTION -->
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="logo.png" alt="Logo">
+        <span>M Maqsood</span>
+      </div>
+      <nav class="navbar" id="navbar">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="past-work.html">Past Work</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="articles.html">Articles/Post</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
   <section class="hero">
     <div class="container">
       <h1>M Maqsood</h1>
@@ -39,12 +40,12 @@
     </div>
   </section>
 
-  <!-- CERTIFICATIONS SECTION -->
+  <!-- Certifications Section -->
   <section class="certifications">
     <h2 class="centered-title">My Certifications</h2>
     <div class="cert-slider-wrapper">
       <div class="cert-slider">
-        <!-- 13 Certification Cards -->
+        <!-- Certificate Cards -->
         <div class="cert-card"><img src="Certi 1.png" alt="Certificate 1"><div class="cert-title">Certificate 1</div></div>
         <div class="cert-card"><img src="Certi 2.png" alt="Certificate 2"><div class="cert-title">Certificate 2</div></div>
         <div class="cert-card"><img src="Certi 3.png" alt="Certificate 3"><div class="cert-title">Certificate 3</div></div>
@@ -62,7 +63,7 @@
     </div>
   </section>
 
-  <!-- TESTIMONIALS SECTION -->
+  <!-- Testimonials Section -->
   <section class="testimonials">
     <h2 class="centered-title">Client Testimonials</h2>
     <div class="testimonial-grid">
@@ -81,7 +82,7 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- Footer -->
   <footer>
     <div class="container footer-flex">
       <p>© 2025 M Maqsood. All rights reserved.</p>
@@ -93,6 +94,14 @@
       </div>
     </div>
   </footer>
+
+  <!-- Auto Certificate Slider Script -->
+  <script>
+    const slider = document.querySelector('.cert-slider');
+    setInterval(() => {
+      slider.scrollBy({ left: 250, behavior: 'smooth' });
+    }, 3000);
+  </script>
 
 </body>
 </html>
