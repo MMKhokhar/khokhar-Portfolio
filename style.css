@@ -1179,3 +1179,373 @@ body {
     align-items: center;
   }
 }
+/* ====================
+   Google Font: Poppins
+==================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* ====================
+   Reset & Base Styles
+==================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9f9f9;
+  color: #1e1e1e;
+  line-height: 1.6;
+}
+
+/* ====================
+   Typography
+==================== */
+h1, h2, h3 {
+  font-weight: 700;
+}
+h1 {
+  font-size: 2.5rem;
+  color: #111;
+}
+h2 {
+  font-size: 2rem;
+  color: #00a99d;
+}
+p {
+  font-size: 1rem;
+  color: #444;
+  text-align: justify;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ====================
+   Header
+==================== */
+.header {
+  background-color: #1e1f26;
+  padding: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+.header-flex {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+.logo-img {
+  height: 50px;
+}
+.nav-list {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+.nav-list a {
+  color: #f5f5f5;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.nav-list a:hover,
+.nav-list a.active {
+  color: #00c6a9;
+}
+
+/* ====================
+   Hero Section
+==================== */
+.hero {
+  padding: 4rem 1rem;
+  background: #ffffff;
+  text-align: left;
+}
+.hero .container {
+  max-width: 1200px;
+  margin: auto;
+}
+.hero h1 {
+  font-size: 3rem;
+  color: #1e1f26;
+}
+.hero h2 {
+  font-size: 1.5rem;
+  color: #007f73;
+  margin-top: 0.5rem;
+}
+.hero p {
+  max-width: 750px;
+  margin-top: 1rem;
+  font-size: 1.05rem;
+}
+.cta-btn {
+  display: inline-block;
+  margin-top: 2rem;
+  background: #00c6a9;
+  color: #fff;
+  padding: 0.8rem 1.6rem;
+  border-radius: 30px;
+  transition: background 0.3s ease;
+}
+.cta-btn:hover {
+  background: #007f73;
+}
+
+/* ====================
+   Certifications
+==================== */
+.certifications {
+  padding: 4rem 1rem;
+  background: #f0fdfc;
+}
+.centered-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: #00a99d;
+}
+.cert-slider-wrapper {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+.cert-slider {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+}
+.cert-card {
+  min-width: 280px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  scroll-snap-align: start;
+  text-align: center;
+  padding: 1rem;
+}
+.cert-card img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+.cert-title {
+  margin-top: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* ====================
+   Testimonials
+==================== */
+.testimonials {
+  padding: 4rem 1rem;
+  background: #ffffff;
+}
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+.testimonial-card {
+  background: #fdfdfd;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border-left: 5px solid #00c6a9;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+.testimonial-card p {
+  font-style: italic;
+}
+.testimonial-card strong {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* ====================
+   Footer
+==================== */
+.footer {
+  background: #1e1f26;
+  color: #f5f5f5;
+  padding: 2rem 1rem;
+}
+.footer-flex {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.social-icons {
+  display: flex;
+  gap: 1rem;
+}
+.social-icons img {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.3s ease;
+}
+.social-icons a:hover img {
+  transform: scale(1.1);
+}
+
+/* ====================
+   Scroll to Top Button
+==================== */
+#scrollToTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #00c6a9;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1rem;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  display: none;
+  z-index: 1000;
+  cursor: pointer;
+}
+#scrollToTopBtn:hover {
+  background: #007f73;
+}
+
+/* ====================
+   Responsive
+==================== */
+@media (max-width: 768px) {
+  .nav-list {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .hero h2 {
+    font-size: 1.2rem;
+  }
+  .cta-btn {
+    padding: 0.6rem 1.2rem;
+  }
+  .cert-card {
+    min-width: 220px;
+  }
+}
+/* ========================
+   Skills Section Styles
+======================== */
+.skills-section {
+  background-color: var(--light-bg);
+  padding: 80px 20px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 60px;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.skill-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.skill-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+.skill-card h2 {
+  font-size: 1.3rem;
+  margin: 12px 0;
+  color: var(--primary);
+}
+
+.skill-card p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.skill-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+/* Progress Bar */
+.progress-bar {
+  background-color: #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 10px 0 15px;
+  height: 10px;
+}
+
+.progress {
+  height: 100%;
+  background: var(--secondary);
+  width: 0;
+  animation: growBar 2s ease forwards;
+  border-radius: 6px;
+}
+
+@keyframes growBar {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--final-width);
+  }
+}
+
+/* Animation on Scroll */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive Enhancements */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .skill-card {
+    padding: 20px;
+  }
+}
