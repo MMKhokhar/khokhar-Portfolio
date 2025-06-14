@@ -32,36 +32,45 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ============================
-// Certifications Carousel
+// Certifications Carousel Slider
 // ============================
-let carouselIndex = 0;
+let currentPosition = 0;
+const autoSlideInterval = 3000;
 
-function moveCarousel() {
-  const track = document.querySelector(".cert-slider");
+function autoSlideCertificates() {
+  const slider = document.querySelector(".cert-slider");
   const cards = document.querySelectorAll(".cert-card");
-  if (!track || cards.length === 0) return;
 
-  const totalVisible = 2; // Number of visible cards
-  const cardWidth = cards[0].offsetWidth + 20; // +gap between cards
-  const totalSlides = Math.ceil(cards.length / totalVisible);
+  if (!slider || cards.length === 0) return;
 
-  carouselIndex = (carouselIndex + 1) % totalSlides;
+  const cardWidth = cards[0].offsetWidth + 16; // include margin/gap
+  const visibleCount = Math.floor(slider.offsetWidth / cardWidth);
+  const totalSlides = cards.length - visibleCount;
 
-  const offset = carouselIndex * cardWidth * totalVisible;
-  track.style.transition = "transform 0.5s ease-in-out";
-  track.style.transform = `translateX(-${offset}px)`;
+  currentPosition = currentPosition >= totalSlides ? 0 : currentPosition + 1;
+
+  const offset = currentPosition * cardWidth;
+  slider.style.transition = "transform 0.6s ease";
+  slider.style.transform = `translateX(-${offset}px)`;
 }
 
-// Start auto sliding every 3 seconds
-setInterval(moveCarousel, 3000);
-const scrollBtn = document.getElementById('scrollToTopBtn');
-scrollBtn.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 300) {
-    scrollBtn.style.display = 'block';
-  } else {
-    scrollBtn.style.display = 'none';
-  }
+setInterval(autoSlideCertificates, autoSlideInterval);
+// Fade-In Animation on Scroll
+const faders = document.querySelectorAll(".fade-in");
+
+const appearOptions = {
+  threshold: 0.1,
+  rootMargin: "0px 0px -50px 0px"
+};
+
+const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add("visible");
+    appearOnScroll.unobserve(entry.target);
+  });
+}, appearOptions);
+
+faders.forEach(fader => {
+  appearOnScroll.observe(fader);
 });
